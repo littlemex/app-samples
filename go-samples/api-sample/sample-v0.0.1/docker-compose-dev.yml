@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+  godev:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+      target: dev
+    container_name: godev
+    volumes:
+      - ./app/src:/go/src
+    ports:
+      - 28080:8080
+    tty: true
+    env_file:
+      - .env.local.dev
+    environment:
+      ENV: "${ENV:-development}"
+      AWS_REGION: "${AWS_REGION:-ap-northeast-1}"
+      DYNAMO_ENDPOINT: "${DYNAMO_ENDPOINT:-http://dynamodbdev:8000}"
+      DYNAMODB_TABLE: "${DYNAMODB_TABLE:-user}"
+    networks:
+      local-dev:
+        aliases:
+          - godev.local
+  dbdev:
+    image: postgres:10.7
+    volumes:
+      - ./postgres-build:/var/lib/postgresql
+    env_file:
+      - .env.local.dev
+    environment:
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    container_name: dbdev
+    ports:
+      - 25432:5432
+    networks:
+      local-dev:
+  dynamodbdev:
+    image: amazon/dynamodb-local:1.17.0
+    container_name: dynamodbdev
+    ports:
+      - 28000:8000
+    networks:
+      local-dev:
+networks:
+  local-dev:

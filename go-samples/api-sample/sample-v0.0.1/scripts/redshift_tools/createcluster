@@ -1,0 +1,1 @@
+aws redshift create-cluster --cluster-identifier dummy --node-type dw.hs1.xlarge --master-username user --master-user-password cmpass --profile dummy --endpoint-url=http://localhost:4566

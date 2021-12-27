@@ -1,0 +1,1 @@
+aws dynamodb put-item --table-name user --profile dummy --region ap-northeast-1 --item '{"UserID":{"S":"1"},"Name":{"S":"Jack"}}' --endpoint-url http://localhost:28000

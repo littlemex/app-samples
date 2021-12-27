@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -x
+
+rm -rf ~/.ssh/known_hosts
+if [[ "$1" == "dev" ]]; then
+  docker-compose -f ../docker-compose-dev.yml up -d --build --remove-orphans
+elif [[ "$1" == "prod" ]]; then
+  docker-compose up -d --build --remove-orphans
+else
+  echo 'input $1'
+fi

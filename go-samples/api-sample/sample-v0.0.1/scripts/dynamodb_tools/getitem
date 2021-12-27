@@ -1,0 +1,1 @@
+aws dynamodb get-item --table-name user --profile dummy --region ap-northeast-1 --key '{"UserID":{"S":"1"}}' --endpoint-url http://localhost:28000
