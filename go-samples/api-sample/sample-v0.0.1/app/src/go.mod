@@ -1,4 +1,4 @@
-module main
+module github.com/littlemex/app-samples/src
 
 go 1.17
 
@@ -7,6 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.6.3
 	github.com/jinzhu/gorm v1.9.15
 	local.packages/models v0.0.0-00010101000000-000000000000
+	local.packages/sample v0.0.0-00010101000000-000000000000
 )
 
 require (
@@ -31,3 +32,5 @@ require (
 replace local.packages/domains => ./domains
 
 replace local.packages/models => ./models
+
+replace local.packages/sample => ./sample
