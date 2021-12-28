@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"local.packages/sample"
 	"github.com/littlemex/app-samples/src/sample2"
+	"local.packages/sample"
 )
 
 func main() {
