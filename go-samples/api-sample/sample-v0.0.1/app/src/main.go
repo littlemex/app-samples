@@ -2,8 +2,11 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/littlemex/app-samples/src/sample2"
+	"local.packages/sample"
 )
 
 func main() {
@@ -15,10 +18,21 @@ func main() {
 			"message": "pong",
 		})
 	})
+	r.GET("/test", handleGetTest)
 	r.GET("/user", handleGetUsers)
 	r.GET("/user/:uid", handleGetUser)
 	r.POST("/user", handlePostUser)
 	r.Run()
+}
+
+func handleGetTest(c *gin.Context) {
+	var a, _ = strconv.Atoi(c.Query("a"))
+	var b, _ = strconv.Atoi(c.Query("b"))
+	var res int = sample.Add(a, b)
+	sample2.Add(1, 10)
+	c.JSON(200, gin.H{
+		"add": res,
+	})
 }
 
 func handleGetUsers(c *gin.Context) {

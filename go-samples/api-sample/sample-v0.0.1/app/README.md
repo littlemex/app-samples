@@ -19,11 +19,3 @@ cd scripts
 	https://docs.aws.amazon.com/ja_jp/sdk-for-go/v1/developer-guide/dynamo-example-create-table.html
 	https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/dynamodbattribute/
 	https://zenn.dev/a_ichi1/articles/2baf3d32b12741
-
-## redshiftへのアクセスの仕方
-
-localstack利用
-
-dynamodbと同様にdummy credentialsを作る
-
-- https://github.com/localstack/localstack
